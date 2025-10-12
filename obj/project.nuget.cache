@@ -1,10 +1,17 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "xKE+b9n0g9I=",
   "success": true,
   "projectFilePath": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj",
   "expectedPackageFiles": [
     "/home/haku/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
   ],
+=======
+  "dgSpecHash": "TczP+SIunR8=",
+  "success": true,
+  "projectFilePath": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\oneSTIOnlineTuitionPayment.csproj",
+  "expectedPackageFiles": [],
+>>>>>>> 004289b374f35416a2bf468bb0246feafdb16635
   "logs": []
 }
