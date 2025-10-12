@@ -8,17 +8,11 @@
     "net9.0": []
   },
   "packageFolders": {
-<<<<<<< HEAD
     "/home/haku/.nuget/packages/": {}
-=======
-    "C:\\Users\\sayie\\.nuget\\packages\\": {},
-    "D:\\PROGRAMMING\\Asp.Net Sdk and Tools\\NuGetPackages": {}
->>>>>>> 004289b374f35416a2bf468bb0246feafdb16635
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj",
       "projectName": "oneSTIOnlineTuitionPayment",
       "projectPath": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj",
@@ -27,21 +21,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/haku/.nuget/NuGet/NuGet.Config"
-=======
-      "projectUniqueName": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\oneSTIOnlineTuitionPayment.csproj",
-      "projectName": "oneSTIOnlineTuitionPayment",
-      "projectPath": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\oneSTIOnlineTuitionPayment.csproj",
-      "packagesPath": "C:\\Users\\sayie\\.nuget\\packages\\",
-      "outputPath": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\obj\\",
-      "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\PROGRAMMING\\Asp.Net Sdk and Tools\\NuGetPackages"
-      ],
-      "configFilePaths": [
-        "C:\\Users\\sayie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> 004289b374f35416a2bf468bb0246feafdb16635
       ],
       "originalTargetFrameworks": [
         "net9.0"
