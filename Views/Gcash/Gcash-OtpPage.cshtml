@@ -1,0 +1,45 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Gcash Payment";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/gcash-otp.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="header">
+        <img src="~/img/gcashLogoWhite.svg" alt="GCash Logo" class="logo">
+    </div>
+
+    <div class="payment-box">
+    <div class="text">
+        <h5>Login to pay with GCash</h3>
+        <p class="textlabel">Enter the 6-digit authentication code sent to your <br>
+        registered mobile number</> </p>
+        </div>
+<form action="/Gcash/OtpPage" method="get">
+<div class="otp">
+  <input type="number" oninput="this.value=this.value.slice(0,1)" required>
+  <input type="number" oninput="this.value=this.value.slice(0,1)" required>
+  <input type="number" oninput="this.value=this.value.slice(0,1)" required>
+  <input type="number" oninput="this.value=this.value.slice(0,1)" required>
+  <input type="number" oninput="this.value=this.value.slice(0,1)" required>
+  <input type="number" oninput="this.value=this.value.slice(0,1)" required>
+</div>
+
+<div class="otp-resend">
+<label for="resend-otp">Didn't get the code? Resend <h10 id="timer">300s</h10></partial></label>
+</div>
+    
+    <button type="next">Next</button>
+</form>
+
+    </div>
+
+</body>
+</html>
