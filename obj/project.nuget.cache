@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "B4BauiGagNU=",
+  "dgSpecHash": "xKE+b9n0g9I=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Migz\\Documents\\School\\PR2RESEARCH\\code\\oneSTIOnlineTuitionPayment\\oneSTIOnlineTuitionPayment.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj",
+  "expectedPackageFiles": [
+    "/home/haku/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
+  ],
   "logs": []
 }
