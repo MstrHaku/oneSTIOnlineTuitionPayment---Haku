@@ -8,23 +8,23 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Migz\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\sayie\\.nuget\\packages\\": {},
+    "D:\\PROGRAMMING\\Asp.Net Sdk and Tools\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Migz\\Documents\\School\\PR2RESEARCH\\code\\oneSTIOnlineTuitionPayment\\oneSTIOnlineTuitionPayment.csproj",
+      "projectUniqueName": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\oneSTIOnlineTuitionPayment.csproj",
       "projectName": "oneSTIOnlineTuitionPayment",
-      "projectPath": "C:\\Users\\Migz\\Documents\\School\\PR2RESEARCH\\code\\oneSTIOnlineTuitionPayment\\oneSTIOnlineTuitionPayment.csproj",
-      "packagesPath": "C:\\Users\\Migz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Migz\\Documents\\School\\PR2RESEARCH\\code\\oneSTIOnlineTuitionPayment\\obj\\",
+      "projectPath": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\oneSTIOnlineTuitionPayment.csproj",
+      "packagesPath": "C:\\Users\\sayie\\.nuget\\packages\\",
+      "outputPath": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\PROGRAMMING\\Asp.Net Sdk and Tools\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Migz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sayie\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
