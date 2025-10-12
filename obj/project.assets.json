@@ -8,31 +8,24 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\sayie\\.nuget\\packages\\": {},
-    "D:\\PROGRAMMING\\Asp.Net Sdk and Tools\\NuGetPackages": {}
+    "/home/haku/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\oneSTIOnlineTuitionPayment.csproj",
+      "projectUniqueName": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj",
       "projectName": "oneSTIOnlineTuitionPayment",
-      "projectPath": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\oneSTIOnlineTuitionPayment.csproj",
-      "packagesPath": "C:\\Users\\sayie\\.nuget\\packages\\",
-      "outputPath": "D:\\OneSTI\\oneSTIOnlineTuitionPayment-Sai\\obj\\",
+      "projectPath": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj",
+      "packagesPath": "/home/haku/.nuget/packages/",
+      "outputPath": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\PROGRAMMING\\Asp.Net Sdk and Tools\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\sayie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/haku/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -51,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -67,6 +60,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[9.0.9, 9.0.9]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -75,7 +74,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

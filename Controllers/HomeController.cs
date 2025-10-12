@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace oneSTIOnlineTuitionPayment_Sai.Controllers;
+namespace oneSTIOnlineTuitionPayment.Controllers;
 
 public class HomeController : Controller
 {
