@@ -1,10 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-// REMOVE THIS IF YOU HAVE A MODEL FILE INSIDE THE MODEL FOLDER!!!!
-//using oneSTIOnlineTuitionPayment.Models;
-
-namespace oneSTIOnlineTuitionPayment.Controllers;
+namespace oneSTIOnlineTuitionPayment_Sai.Controllers;
 
 public class HomeController : Controller
 {
@@ -15,8 +12,20 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Balance()
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+    public IActionResult Error()
     {
         return View();
     }
 }
+
+
