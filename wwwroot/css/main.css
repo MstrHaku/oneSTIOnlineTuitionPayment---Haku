@@ -1,0 +1,1016 @@
+:root {
+  --blue-main: #0B5793;
+  --yellow-main: #F4D03f;
+  --yellow-border: #E7C01D;
+  --dark-grey-text: #343A40;
+  --light-grey-green-sb-unc: #607D8B;
+  --light-grey-green-profile: #678390;
+  --lightest-grey-sb-bg-unc: #FAFAFA;
+  --lighter-grey-bg: #F7F7F7;
+  --light-grey-bg: #F1F2F7;
+  --black: #000000;
+  --white: #FFFFFF;
+  --light-grey-lines: #D3D3D3;
+  --grey-borders: #808080; 
+
+  --border-radius: 5px;
+  --shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+
+  --bold: 700;
+  --semi-bold: 600;
+  --regular: 400;
+
+  --horizontal-tabs-padding: 20px;
+  --vertical-tabs-padding: 10px;
+
+  --tabs-height: 500px;
+
+  --text-spacing: 3.5px;
+
+
+  --modal-width: 250px;
+  --modal-height: 280px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+p {
+  color: var(--dark-grey-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark-grey-text);
+}
+
+ul {
+  list-style: none;
+}
+
+html {
+  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  background: url("/img/background.png");
+  display: block;
+  height: 100dvh;
+  min-height: 100vh;
+}
+
+div {
+  display: block;
+}
+
+label {
+  color: var(--dark-grey-text);
+  font-weight: var(--semi-bold);
+}
+
+button {
+  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+@supports (padding: constant(safe-area-inset-top)) {
+  
+}
+
+/* NAVBAR */
+.site_header {
+  background: var(--blue-main);
+  height: 55px;
+  width: 100%;
+  align-content: center;
+  padding: 0px 30px;
+  position: fixed;
+  top: 0;
+}
+
+.desktop_tablet_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.phone_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top_con {
+  display: flex;
+  align-items: center;
+}
+
+.hamIcon_con {
+  margin-right: 35px;
+  align-self: center;
+}
+
+.hamIcon_con:hover {
+  cursor: pointer;
+}
+
+.logo_con {
+  width: 100px;
+  padding-bottom: 3px;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.avatar_con {
+  width: 40px;
+  height: 40px;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+/* MAIN */
+.main-flex {
+  display: flex;
+  margin-top: 55px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: auto;
+  row-gap: 20px;
+  width: 100%;
+  padding: 30px;
+  margin-left: 280px;
+}
+
+/* TOP BAR */
+.top_bar {
+  background: white;
+  border-radius: var(--border-radius);
+  width: 100%;
+  height: 55px;
+  min-height: fit-content;
+  padding: 14px 16px;
+  align-content: center;
+  box-shadow: var(--shadow);
+}
+
+.top_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance h5 {
+  display: inline-block;
+  font-weight: var(--semi-bold);
+  font-size: 1rem;
+}
+
+.balance .rem_balance {
+  color: var(--blue-main);
+}
+
+.grade_level h5 {
+  font-size: 1.2rem;
+  font-weight: var(--semi-bold);
+  color: var(--blue-main);
+}
+
+.school_term {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--text-spacing);
+  justify-content: center;
+}
+
+.school_term p {
+  display: inline;
+  font-weight: var(--semi-bold);
+  font-size: 1rem;
+}
+
+
+/* MAIN GRID */
+.main_flex {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  width: 100%;
+}
+
+.parent_flex{
+  display: flex;
+  gap: 15px;
+  height: 100%;
+}
+
+.tabs_top_bar {
+  background: var(--lighter-grey-bg);
+  border-bottom: 1px solid var(--yellow-border);
+  padding: 5px var(--horizontal-tabs-padding);
+  border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+}
+
+.tabs_top_bar h5 {
+  color: var(--blue-main);
+  font-weight: var(--semi-bold);
+  font-size: 1rem;
+  display: inline;
+}
+
+.tabs_bot_bar {
+  margin-top: auto;
+  background: var(--yellow-main);
+  display: flex;
+  justify-content: space-between;
+  padding: 5px var(--horizontal-tabs-padding);
+  border-radius: 0px 0px var(--border-radius) var(--border-radius);
+}
+
+.tabs_bot_bar p {
+  font-weight: var(--semi-bold);
+  font-size: 0.9rem;
+}
+
+.tabs_price {
+  display: flex;
+  gap: 3.5px;
+}
+
+.pay_date_item {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--light-grey-lines);
+  padding: 6px 10px;
+}
+
+.pay_date_item_date {
+  display: flex;
+  flex-direction: row;
+  gap: 3.5px;
+}
+
+.pay_date_item p {
+  font-size: 0.9em;
+}
+
+.pay_date_item_total_fixed {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--light-grey-lines);
+  padding: 6px 10px;
+}
+
+.pay_date_item_total_fixed p {
+  font-size: 1em;
+  color: var(--blue-main);
+}
+
+/* GRID 1 */
+.grid_item1 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  max-height: fit-content;
+  flex: 1;
+}
+
+.paynow_btn {
+  background: var(--yellow-main);
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: var(--border-radius);
+  font-weight: var(--semi-bold);
+  box-shadow: var(--shadow);
+}
+
+.paynow_btn:hover {
+  cursor: pointer;
+}
+
+/* TRANSACTION HISTORY */
+.transaction_history {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  height: 100%;
+  width: 100%;
+}
+
+.transac_main {
+  padding: var(--vertical-tabs-padding) var(--horizontal-tabs-padding);
+  overflow-y: auto;
+  height: 400px;
+}
+
+.transac_list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.day_transac {
+  font-weight: var(--semi-bold);
+  font-size: 0.9rem;
+}
+
+.day_transac_list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.transac_item {
+  margin: 0px 10px;
+  padding: 2px 0px;
+  border-bottom: solid 1px var(--light-grey-lines);
+}
+
+.transac_item div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.transac_time {
+  font-size: 0.8em;
+}
+
+.transac_amount_decr {
+  font-size: 1em;
+}
+
+/* GRID 2 */
+/* PAYMENT SCHEDULE */
+.grid_item2 {
+  flex: 1;
+}
+
+.payment_schedule {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  height: var(--tabs-height);
+  width: 100%;
+}
+
+.main_pay_sched {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0px var(--horizontal-tabs-padding);
+}
+
+/* GRID 3 */
+.grid_item3 {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  flex: 1;
+}
+
+/* DROPDOWN SCHOOL YEAR AND TERM */
+.school_year_term {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 14px 20px;
+  width: fit-content;
+}
+
+.school_year_term h5 {
+  font-size: 1rem;
+  font-weight: var(--semi-bold);
+}
+
+.dropdown_school_year_term {
+  background: transparent;
+  border: 1px solid var(--grey-borders);
+  border-radius: var(--border-radius);
+  padding: 2px 5px;
+}
+
+.dropdown_school_year_term p {
+  font-size: 0.9rem;
+  font-weight: var(--regular);
+}
+
+/* CHARGES  */
+.charges {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  width: 100%;
+}
+
+.charges_main {
+  background: var(--white);
+  padding: var(--vertical-tabs-padding) var(--horizontal-tabs-padding);
+}
+
+.charges_main p {
+  font-weight: var(--semi-bold);
+  font-size: 0.8rem;
+}
+
+.charges_list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.charges_item {
+  display: flex;
+  justify-content: space-between;
+  gap: 90px;
+  background: var(--lighter-grey-bg);
+  padding: var(--vertical-tabs-padding) var(--horizontal-tabs-padding);
+}
+
+.charges_item_child {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.charges_desc {
+  font-weight: var(--regular) !important;
+  font-size: 0.7em !important;
+}
+
+/* GRID 4 */
+.grid_item4 {
+  flex: 1;
+}
+.payments_adjustments {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  width: 100%;
+  height: var(--tabs-height);
+}
+
+.pay_ad_main {
+  background: var(--white);
+  padding: var(--vertical-tabs-padding) var(--horizontal-tabs-padding);
+  overflow-y: auto;
+}
+
+.pay_ad_list_parent {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pay_ad_top_tab {
+  background: var(--lighter-grey-bg);
+  display: flex;
+  align-items: center;
+  column-gap: 3.5px;
+  padding: 5px 10px;
+}
+
+.pay_ad_top_tab p {
+  font-weight: var(--regular);
+  font-size: 0.9rem;
+}
+
+.pay_ad_top_tab_date {
+  display: flex;
+  align-items: center;
+  column-gap: 3.5px;
+  flex-direction: row;
+}
+
+.pay_ad_top_tab_date div {
+  display: flex;
+  flex-direction: row;
+}
+
+.pay_ad_top_tab_or {
+  display: flex;
+  column-gap: 3.5px;
+  flex-direction: row;
+}
+
+.pay_ad_list_child {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* SIDEBAR */
+.site_sidebar {
+  background: var(--white);
+  width: 280px;
+  height: 100vh;
+  position: fixed;
+  box-shadow: var(--shadow);
+}
+
+.sidebar_nav {
+  height: inherit;
+}
+
+.profile {
+  display: none;
+  gap: 30px;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 22px;
+}
+
+.profile h6 {
+  display: inline;
+  font-size: 1.2rem !important;
+  font-weight: var(--semi-bold) !important;
+  color: var(--light-grey-green-profile) !important;
+  align-self: center;
+}
+
+.nav_items a {
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+  color: var(--light-grey-green-sb-unc);
+  align-items: center;
+  gap: 30px;
+  padding: 15px 30px;
+}
+
+.nav_items h6 {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: var(--regular);
+  color: var(--light-grey-green-sb-unc);
+}
+
+.nav_items:hover, .nav_items:hover h6, .nav_items:hover i {
+  background: var(--lightest-grey-sb-bg-unc);
+  color: var(--blue-main);
+}
+
+.nav_items {
+  font-size: 16px;
+}
+
+/* SIDEBAR TOGGLE */
+main.toggle {
+    margin-left: 75px;
+}
+
+.site_sidebar.toggle {
+  width: 75px;
+}
+
+.site_sidebar.toggle h6 {
+  display: none;
+}
+
+.nav_items.toggle {
+  font-size: 18px;
+}
+
+
+/* POP UP */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal.close {
+  display: none;
+}
+
+.modal_content {
+  width: auto;
+  height: auto;
+  background: var(--white);
+  border-radius: var(--border-radius);
+}
+
+.top_con_pop {
+  display: flex;
+  flex-direction: column;
+  background: var(--blue-main);
+  border-bottom: 1px solid var(--yellow-border) ;
+  border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+  padding: 5px 5px;
+}
+
+.top_con_pop h3 {
+  color: var(--white);
+  font-weight: var(--bold);
+  padding: 0px 35px 20px;
+  text-align: center;
+}
+
+.close_con {
+  align-self: end;
+}
+
+#closeBtn:hover {
+  cursor: pointer;
+}
+
+.main_con {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 10px 15px 30px;
+}
+
+.main_con p {
+  font-size: 0.9rem;
+  font-weight: var(--semi-bold);
+}
+
+/* PAYMENT METHOD */ 
+.payment_method {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment_method.inactive {
+  display: none;
+}
+
+.payment_method_con {
+  display: flex;
+  flex-direction: column;
+}
+
+.method_con {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--light-grey-lines);
+  cursor: pointer;
+}
+
+#mayaPayment {
+  border: none;
+}
+
+.method_con h6 {
+  font-size: 1rem;
+
+}
+
+.method_img_con {
+  display: flex;
+  width: 60px;
+}
+
+.method_img_con img {
+  width: 100%; 
+  height: auto;
+}
+
+.method_img_con.gcash_logo {
+  align-self: center;
+  width: 65px;
+}
+
+.method_img_con.maya_logo {
+  align-self: end;
+  width: 55px;
+}
+
+/* TRANSACTION */
+.transaction {
+  display: none;
+  flex-direction: column;
+}
+
+.transaction.active {
+  display: flex;
+}
+
+.top_con_transac {
+  display: flex;
+  flex-direction: column;
+}
+
+.rem_bal_con {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs_price.pop_up p {
+  color: var(--blue-main);
+}
+
+.pay_meth_con {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pay_meth_form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.amount_con label {
+  font-size: 0.9rem;
+}
+
+.amount_input {
+  display: flex;
+}
+
+.amount_input input {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--grey-borders);
+  padding: 4px 9px;
+}
+
+.amount_input input:focus + .placeholder,
+.amount_input input:valid + .placeholder {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.amount_input img {
+  width: 10px;
+  height: auto;
+}
+
+.placeholder {
+  visibility: visible;
+  position: absolute;
+  z-index: 2;
+  margin-left: 5px;
+}
+
+.placeholder p {
+  display: inline;
+  color: var(--grey-borders);
+}
+
+.no_spinner::-webkit-outer-spin-button,
+.no_spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no_spinner {
+  -moz-appearance: textfield;
+}
+
+.pop_up_btn_proceed {
+  width: fit-content;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: var(--semi-bold);
+  border-radius: var(--border-radius);
+  padding: 7px 55px;
+  background: var(--blue-main);
+  color: var(--white);
+  align-self: center;
+}
+
+/* TRANSACTION DETAIL */
+.transaction_details {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.transaction_details.active {
+  display: flex;
+}
+
+.transaction_details p {
+  font-size: 0.8rem;
+}
+
+.top_con_trans_details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--text-spacing);
+  border-bottom: 1px solid var(--light-grey-lines);
+  padding: 0px 10px 5px ;
+}
+
+.top_con_trans_details p {
+  font-size: 0.9rem;
+}
+
+.main_trans_det {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.trans_detail_con {
+  display: flex;
+  flex-direction: column;
+}
+
+.trans_detail_con div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date_time_con {
+  gap: var(--text-spacing);
+}
+
+.ref_num_details {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* RESPONIVE */
+/* TOP BAR */
+@media (max-width: 1200px) and (min-width: 1120px) {
+  .top_bar {
+    font-size: 14px;
+  }   
+
+  .top_flex {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    column-gap: 20px;
+  }
+
+  .school_term p {
+    font-size: 0.9rem;
+  }
+}
+
+/* MEDIA QUERY */
+/* TABLET */
+@media (max-width: 1120px) {
+  html {
+    font-size: 15px;
+  }
+
+  main {
+    margin-left: 75px;
+  }
+
+  .site_sidebar {
+    width: 75px;
+  }
+
+  .site_sidebar h6 {
+    display: none;
+  }
+
+  .nav_items {
+    font-size: 18px;
+  }
+
+  /* SIDEBAR TOGGLE */
+  main.toggle {
+    margin-left: 75px;
+  }
+
+  .site_sidebar.toggle {
+    width: 280px;
+  }
+
+  .site_sidebar.toggle h6 {
+    display: inline-block;
+  }
+
+  .nav_items.toggle {
+    font-size: 16px;
+  }
+}
+
+/* TOP BAR (TABLET AND PHONE) */
+@media (max-width: 930px) {
+  .top_flex {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    column-gap: 20px;
+    row-gap: 5px;
+  }
+}
+
+@media (max-width: 900px) {
+  .parent_flex {
+    flex-direction: column;
+  }
+}
+
+
+/* PHONE */
+@media (max-width: 767px) {
+  :root {
+    --tabs-height: 350px;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  /* NAVBAR */
+  #deskAvatar {
+    display: none;
+  }
+
+  #phoneAvatar {
+    height: 35px;
+    width: 35px;
+  }
+
+  .desktop_tablet_nav {
+    display: none;
+  }
+
+  .hamIcon_con {
+    margin: 0;
+  }
+
+  .site_sidebar {
+    visibility: hidden;
+  }
+
+  .profile {
+    display: flex;
+  }
+
+  main {
+    margin-left: 0px;
+  }
+
+  .pay_ad_top_tab p {
+    font-size: 0.8rem;
+  }
+
+  /* SIDEBAR TOGGLE */
+  main.toggle {
+    margin-left: 0px;
+  }
+
+  .site_sidebar.toggle {
+    visibility: visible;
+    background: var(--white) !important;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    box-shadow: var(--shadow);
+  }
+
+  .site_sidebar.toggle h6 {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: var(--regular);
+    color: var(--light-grey-green-sb-unc);
+  }
+
+  .nav_items.toggle {
+    font-size: 16px;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .phone_nav {
+    display: none;
+  }
+}

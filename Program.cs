@@ -23,7 +23,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Gcash}/{action=PhoneNumber}/{id?}")
+    pattern: "{controller=Home}/{action=Main}/{id?}")
     .WithStaticAssets();
 
 
