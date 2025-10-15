@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj": {}
+    "C:\\Users\\Migz\\Documents\\School\\PR2RESEARCH\\code\\oneSTIOnlineTuitionPayment\\oneSTIOnlineTuitionPayment.csproj": {}
   },
   "projects": {
-    "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj": {
+    "C:\\Users\\Migz\\Documents\\School\\PR2RESEARCH\\code\\oneSTIOnlineTuitionPayment\\oneSTIOnlineTuitionPayment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj",
+        "projectUniqueName": "C:\\Users\\Migz\\Documents\\School\\PR2RESEARCH\\code\\oneSTIOnlineTuitionPayment\\oneSTIOnlineTuitionPayment.csproj",
         "projectName": "oneSTIOnlineTuitionPayment",
-        "projectPath": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/oneSTIOnlineTuitionPayment.csproj",
-        "packagesPath": "/home/haku/.nuget/packages/",
-        "outputPath": "/home/haku/Documents/vsCodeProjects/GitRepo/oneSTIOnlineTuitionPayment---Haku/obj/",
+        "projectPath": "C:\\Users\\Migz\\Documents\\School\\PR2RESEARCH\\code\\oneSTIOnlineTuitionPayment\\oneSTIOnlineTuitionPayment.csproj",
+        "packagesPath": "C:\\Users\\Migz\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Migz\\Documents\\School\\PR2RESEARCH\\code\\oneSTIOnlineTuitionPayment\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/haku/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Migz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -54,12 +60,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.9, 9.0.9]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
