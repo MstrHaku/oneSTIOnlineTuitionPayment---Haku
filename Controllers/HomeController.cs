@@ -164,6 +164,14 @@ public class HomeController : Controller
     }
 
     [HttpGet]
+    public IActionResult getPaymentsAndAdjustments()
+    {
+        var payAd = _context.TransactionTable.AsNoTracking().OrderBy(p => p.CreatedAt).Select(p => new { p.Id, p.Amount, DateOnly = p.CreatedAt.ToString("yyyy-MM-dd"), TimeOnly = p.CreatedAt.ToString("hh:mm tt") }).ToList();
+
+        return Json(payAd);
+    }
+
+    [HttpGet]
     public IActionResult getPaymentSched()
     {
         var paymentSched = _context.PaymentSchedTable.AsNoTracking().OrderBy(p => p.CreatedAt).Select(p => new { p.Id, Amount = p.Amount, CreatedAt = p.CreatedAt.ToString("yyyy-MM-dd")}).ToList();

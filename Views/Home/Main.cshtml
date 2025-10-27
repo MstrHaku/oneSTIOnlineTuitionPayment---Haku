@@ -298,7 +298,7 @@
                     <script>
                         (async function() {
                             try {
-                                const response = await fetch("Home/getTransaction");
+                                const response = await fetch("Home/getPaymentsAndAdjustments");
                                 const data = await response.json();
 
                                 const payAdListParent = document.getElementById("payAdListParent");
