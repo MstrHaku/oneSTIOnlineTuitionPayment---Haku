@@ -79,7 +79,7 @@ public class GCashController : Controller
                     }
 
                     // CHECK REMBALANCE IN REMBALANCE TABLE
-                    var newRemBalance = remBalance.Balance - gcashTable.Amount;
+                    var newRemBalance = (remBalance?.Balance ?? 0) - gcashTable.Amount;
 
                     var updatedRemBalance = new RemBalanceModel
                     {

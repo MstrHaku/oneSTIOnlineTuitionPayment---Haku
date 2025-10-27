@@ -133,7 +133,7 @@ public class HomeController : Controller
             var payment = new PaymentModel
             {
                 Amount = amount.Amount,
-                PaymentMethod = amount.PaymentMethod
+                PaymentMethod = amount.PaymentMethod ?? "No Payment Method"
             };
 
             _context.PaymentTable.Add(payment);

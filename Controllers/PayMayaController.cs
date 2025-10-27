@@ -107,7 +107,7 @@ public class PayMayaController : Controller
 
                     // COPY THIS TO GCASH
                     // UPDATE REMAINING BALANCE ON REM BALANCE TABLE
-                    var newRemBalance = remBalance.Balance - latest.Amount;
+                    var newRemBalance = (remBalance?.Balance ?? 0) - latest.Amount;
 
                     var updateRemBalance = new RemBalanceModel
                     {
