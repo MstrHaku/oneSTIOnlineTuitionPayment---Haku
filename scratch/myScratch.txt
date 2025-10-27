@@ -1,2 +1,117 @@
 WRITE YOUR THOUGHTS HERE !!! -----------------------------------------------
 
+1. When you arein linux always start or autostart mysql or mariadb
+2. Always `dotnet tool run dotnet-ef database update` after first forking this repo
+3. Always `dotnet clean` and `dotnet build` before commiting!!!
+4. If the migration folder show an error check the namespace!!! It must be the same name as the project
+5. Always remove "appsettings.Development.json" on your github repo, it contains ung database info such as your db password
+6. Always  rename the forked repo local folder the same as the original repo, to avoid .sln problem and namespace errors.
+
+
+Needs:
+
+1. Transaction History
+
+2. 3rd Party Apps for Log in and payment (Optional)
+
+Reason for removing balance:
+
+	There are only 2 possible ways of loading (transferring) your balance
+
+	1. Thru cashier
+	2. 3rd Party App
+
+	The first (1) method conflict the main study which is avoiding long lines at cashier.
+
+	The second (2) method will be better in terms of efficiency and ease of use if we just direct it to the cashier itself 
+
+NOTE !!! For now, do not focus on security etc etc, just make the prototype work
+
+//Put the data from the GCash and PayMaya controller to the transaction table
+
+// Display the transaction history
+
+//Display the payment schedule
+
+//Display payments and adjustments
+
+//CREATE A VALIDATION CHECKER FOR THE AVAILABLE BALANCE IN THE 3RD PARTY PAYMENT TO CHECK IF THE AMOUNT EXCEEDS THE AVAILABLE BALANCE
+
+//Subtract the remaining balance 
+
+//Set the 3rd party payment balance to 10,000, subtract the amount to the 3rd party payment balance and remaining balance.
+
+//Create a validation for amount input to check if the inputted amount is greater than the remaining balance if so show an error....
+
+//We will be transferring a value from the JavaScript to the controller to the database.
+
+//If the value is less than 10,000 it will automatically reset the remaning balance to 10,000 and from the JavaScript it will send a value of 10,000 to the MySQL database.
+
+Payment and Adjustments records each payment
+
+If a payment is made the payment schedule will automatically arrange the payments for each month
+
+Use a database to store each payments.
+
+//When the remaining balance is 0, automatically reset the remaining balance , same with GCash and PayMaya balance
+
+Automatically set the remaining balance for OneSTI, GCash, and PayMaya to 10,000.00PHP if it reached 0. (For simulation) (JS? or C#?)
+
+
+The login for GCash and PayMaya will 
+
+use SignalR for displaying the transaction table and payment schedule table
+
+use Ajax for dynamically setting the remaing balance
+
+
+When naming an <input> tag the `name=""` attribute should be the same as the properties inside your model (It is case-sensitive, but it is better to copy it 1:1 to lessen errors)
+
+!!! ALWAYS USE PASCAL CASE FOR NAMING 
+
+The parameter name inside your controller should have a different name and not the same as the properties, it would cause an error.
+
+
+
+IMPORTANT !!! ---------------------------------------------------------------------------------------------------
+
+WHEN CREATING A NEW TABLE IN THE DATABASE, ALWAYS MAKE A MODEL FIRST, 
+
+THE PROPERTIES INSIDE YOUR MODEL ARE THE TABLE ATTRIBUTES,
+
+AFTER YOU HAVE CREATED A MODEL CLASS (TABLE)
+
+YOU NEED TO INSTANTIATE IT INSIDE YOUR `DbContext.cs` FILE 
+
+	Ex.
+
+		public DbSet<Model> ModelTable { get; set; }
+
+	The method name `ModelTable` will be your table name inside your MySQL workbench
+
+AFTER YOU HAVE CREATED AND INSTATIATE YOUR TABLE
+
+TYPE THIS IN THE TERMINAL TO UPDATE AND APPLY YOUR CHANGES
+
+	`dotnet ef migrations add NewTable`
+
+	The `NewTable` can be anything, make sure it represents what you will change into your database
+
+	After it successfully migrate
+
+	Type:
+
+	`dotnet ef database update`
+
+	AFTER THIS REFFRESH YOUR MySQL Workbench!!! IMPORTANT !
+
+To see your table, right click your table name and click `Select Rows - Limit 1000`
+
+
+
+
+
+REVISION (IF POSSIBLE) --------------------------------------------------------------------------------------------
+
+The payment method value is from a <p> tag, making it changeable through the DOM
+ 
