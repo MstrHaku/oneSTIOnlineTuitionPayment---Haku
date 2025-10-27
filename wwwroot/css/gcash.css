@@ -374,6 +374,7 @@ main {
     height: 30px;
     text-align: center;
     border: none;
+    background: none;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -417,11 +418,9 @@ main {
     caret-color: transparent;
 }
 
-.mpin_con input:valid {
+.mpin_con input.active {
     background: var(--black);
 }
-
-
 
 /* PAYMENT DETAILS */
 .payment_details {

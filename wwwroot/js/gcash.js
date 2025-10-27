@@ -104,3 +104,120 @@ payAmountForm.addEventListener("submit", async function (event) {
         amountError.textContent = "Network error occured. Please try again later.";
     }
 });
+
+// PREVENT FORM SUBMISSION OTP
+const otpForm = document.getElementById("otpForm");
+
+otpForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+});
+
+// PREVENT FORM SUBMISSION MPIN
+const mpinForm = document.getElementById("mpinForm");
+
+mpinForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+});
+
+// VARIABLES
+const otp = document.querySelectorAll(".otp_con input");
+const firstOtp = document.getElementById("otpPin1");
+
+const mpin = document.querySelectorAll(".mpin_con input");
+
+// MAKE USER ALWAYS START AT THE FIRST INPUT
+document.addEventListener("DOMContentLoaded", () => {
+
+    // ALWAYS START AT FIRST INPUT OTP
+    otp.forEach((input, index) => {
+        if (index !== 0) input.disabled = true; 
+    });
+
+    otpForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        otp.forEach(i => i.value = "");
+
+        otp[0].focus();
+    });
+
+    otp.forEach((input, index) => {
+        input.addEventListener("input", () => {
+            const value = input.value;
+
+            if (value && index < otp.length - 1) {
+                otp[index + 1].disabled = false;
+                otp[index + 1].focus();
+            }
+        });
+
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Backspace" && index > 0 && !input.value) {
+                otp[index].disabled = true;
+                otp[index - 1].focus();
+                otp[index - 1].value = "";
+            }
+
+            if (index > 0 && otp[index - 1].disabled) {
+                e.preventDefault();
+                otp[0].focus();
+            }
+        });
+
+        input.addEventListener("focus", () => {
+            if (index > 0 && otp[index - 1].disabled) {
+                otp[0].focus();
+            }
+        });
+    });
+
+    // ALWAYS START AT FIRST INPUT
+    mpin.forEach((input, index) => {
+        if (index !== 0) input.disabled = true;
+    });
+
+    mpinForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        mpin.forEach(i => i.value = "");
+
+        mpin[0].focus();
+    });
+
+    mpin.forEach((input, index) => {
+        input.addEventListener("input", () => {
+            const value = input.value;
+
+            if (value) {
+                input.classList.add("active");
+            }
+
+            if (value && index < mpin.length - 1) {
+
+                mpin[index + 1].disabled = false;
+                mpin[index + 1].focus();
+            }
+        });
+
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Backspace" && index > 0 && !input.value) {
+                mpin[index - 1].classList.remove("active");
+                mpin[index].disabled = true;
+                mpin[index - 1].focus();
+                mpin[index - 1].value = "";
+            }
+
+            if (index > 0 && mpin[index - 1].disabled) {
+                e.preventDefault();
+                mpin[0].focus();
+            }
+        });
+
+        input.addEventListener("focus", () => {
+            if (index > 0 && mpin[index - 1].disabled) {
+                mpin[0].focus();
+            }
+        });
+    });
+
+});
