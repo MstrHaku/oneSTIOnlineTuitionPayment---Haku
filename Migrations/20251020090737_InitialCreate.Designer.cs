@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using testOneSTI.Data;
+using oneSTIOnlineTuitionPayment.Data;
 
 #nullable disable
 
@@ -24,7 +24,7 @@ namespace oneSTIOnlineTuitionPayment.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("testOneSTI.Data.Students", b =>
+            modelBuilder.Entity("oneSTIOnlineTuitionPayment.Data.Students", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
