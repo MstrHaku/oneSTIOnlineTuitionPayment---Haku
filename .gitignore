@@ -10,6 +10,9 @@
 # obj
 obj/
 
+# App Settings Development JSON
+appsettings.Development.json
+
 # User-specific files
 *.rsuser
 *.suo

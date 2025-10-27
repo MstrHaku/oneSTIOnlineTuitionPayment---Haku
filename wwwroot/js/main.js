@@ -12,6 +12,9 @@ function handleSidebar(screenSize) {
     } 
 }
 
+// DEBUGGER
+console.log("This is main.js");
+
 // SIDEBAR TOGGLE
 const hamBtnDesk = document.getElementById("hamBtnDesk");
 const hamBtnPhone = document.getElementById("hamBtnPhone");
@@ -46,6 +49,7 @@ phone.addEventListener('change', handleSidebar);
 // PAYMENT TRANSACTION ---------------------------------------------
 
 // POP UP LAYOUT
+const payAmountForm = document.getElementById("payAmountForm");
 const paymentMethodCon = document.getElementById("paymentMethodCon");
 const transactionCon = document.getElementById("transactionCon");
 const transactionDetailsCon = document.getElementById("transactionDetailsCon");
@@ -60,7 +64,7 @@ gcashPayment.addEventListener("click", () => {
     transactionDetailsCon.classList.remove("active");
 
     // PAYMENT METHOD TEXT
-    document.getElementById("paymentMethod").textContent = "GCash";
+    document.getElementById("paymentMethodPTag").textContent = "GCash";
 });
 
 mayaPayment.addEventListener("click", () => {
@@ -69,7 +73,7 @@ mayaPayment.addEventListener("click", () => {
     transactionDetailsCon.classList.remove("active");
 
     // PAYMENT METHOD TEXT
-    document.getElementById("paymentMethod").textContent = "PayMaya";
+    document.getElementById("paymentMethodPTag").textContent = "PayMaya";
 });
 
 // PAYMENT AMOUNT POP UP 
@@ -84,10 +88,24 @@ amount.addEventListener('keydown', (e) => {
     e.preventDefault();
 });
 
-// PROCEED BTN
-const proceedBtn = document.getElementById("proceedBtn");
+// PAYMENT METHOD VALUE SENT TO ASP.NET (CONTROLLER)
+const paymentMethod = document.getElementById("paymentMethod");
+const paymentMethodPTag = document.getElementById("paymentMethodPTag");
 
+debug("Payment Method", paymentMethodPTag.textContent);
 
+document.querySelector("form").addEventListener("submit", function() {
+    paymentMethod.value = paymentMethodPTag.textContent;
+})
+
+// AMOUNT FORM VALIDATION
+payAmountForm.addEventListener("submit", function(e) {
+    const amount = document.getElementById("amount");
+    if (!amount) {
+        e.preventDefault();
+        alert("Enter amount");
+    }
+});
 
 // CLOSE BTN AND PAY NOW BTN
 const payNowBtn = document.getElementById("payNowBtn");
@@ -104,3 +122,42 @@ const popUp = document.getElementById("popUp");
         transactionCon.classList.remove("active");
         transactionDetailsCon.classList.remove("active");
     });
+    
+
+// REMAINING BALANCE VALIDATION
+const amountError = document.getElementById("amountError");
+payAmountForm.addEventListener("submit", async function (event) {
+    event.preventDefault(); 
+    amountError.textContent = "";
+
+    const form = event.target;
+    const amount = parseFloat(document.getElementById("amount").value);
+    const paymentMethod = document.getElementById("paymentMethod").value;
+
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ 
+                Amount: amount,
+                PaymentMethod: paymentMethod
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            amountError.textContent = data?.message || "Amount exceeded!";
+            console.warn("Server error: ", data);
+        } else if (data.redirectUrl) {
+            window.location.href = data.redirectUrl;
+        }
+    } catch (err) {
+        amountError.textContent = "Network error occured. Please try again later.";
+    }
+});
+
+
+

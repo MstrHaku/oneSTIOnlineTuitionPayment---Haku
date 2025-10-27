@@ -12,6 +12,7 @@
   --white: #FFFFFF;
   --light-grey-lines: #D3D3D3;
   --grey-borders: #808080; 
+  --red-error: #da1e37;
 
   --border-radius: 5px;
   --shadow: 0 0 20px rgba(0, 0, 0, 0.08);
@@ -78,6 +79,11 @@ label {
 
 button {
   font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+.amount_error {
+  color: var(--red-error);
+  font-size: 0.75rem !important;
 }
 
 @supports (padding: constant(safe-area-inset-top)) {
@@ -184,6 +190,11 @@ main {
 }
 
 .balance .rem_balance {
+  color: var(--blue-main);
+}
+
+.rem_balance p {
+  display: inline;
   color: var(--blue-main);
 }
 
@@ -358,6 +369,10 @@ main {
 
 .transac_amount_decr {
   font-size: 1em;
+}
+
+.list_date {
+  color: var(--blue-main) !important;
 }
 
 /* GRID 2 */

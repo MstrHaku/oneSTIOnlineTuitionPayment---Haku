@@ -1,11 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Main";
+    ViewData["Title"] = "Home Page";
 }
 <div class="top_bar">
     <div class="top_flex">
         <div class="balance">
             <h5>Remaining Balance: </h5>
-            <h5 class="rem_balance">PhP 6,900.00</h5>
+            <h5 class="rem_balance">PhP <p id="remBalance">@Model.RemBalance?.Balance</p>.00</h5>
         </div>
 
         <div class="grade_level">
@@ -29,137 +29,93 @@
                 </div>
             </div>
 
+            <!-- TRANSACTION HISTORY -->
             <div class="transaction_history">
                 <div class="tabs_top_bar">
                     <h5>Transaction History</h5>
                 </div>
 
                 <div class="transac_main">
-                    <ul class="transac_list">
-                        <li class="day_transac">
-                            <div class="transac_date">
-                                <p>Today</p>
-                            </div>
 
-                            <ul class="day_transac_list">
-                                <li>
-                                    <div class="transac_item">
-                                        <p class="transac_time">1:00 PM</p>
+                    <!-- TRANSACTION LIST -->
+                    <ul class="transac_list" id="transacList"></ul>
+                    <script>
+                        (async function() {
+                            try {
+                                const response = await fetch("Home/getTransaction");
+                                const data = await response.json();
 
-                                        <div class="transac_amount_decr">
-                                            <p>Tuition Fee</p>
-                                            <p>-1,000.00</p>
-                                        </div>
+                                const transacList = document.getElementById("transacList");
+                                transacList.innerHTML = "";
+
+                                // GROUP EACH LIST BY DATE
+                                const grouped = {};
+                                data.forEach(d => {
+                                    if (!grouped[d.dateOnly]) grouped[d.dateOnly] = [];
+                                    grouped[d.dateOnly].push(d);
+                                });
+
+                                // TODAYS DATE
+                                const todayDate = new Date();
+                                const yesterdayDate = new Date();
+                                yesterdayDate.setDate(todayDate.getDate() - 1);
+
+                                const today = todayDate.toLocaleDateString("en-CA");
+                                const yesterday = yesterdayDate.toLocaleDateString("en-CA");
+
+                                for (const [date, transactions] of Object.entries(grouped)) {
+                                    const liDay = document.createElement("li");
+                                    liDay.classList.add("day_transac");
+
+                                    let dateLabel;
+                                    if (date === today) {
+                                        dateLabel = "Today";
+                                    } else if (date === yesterday) {
+                                        dateLabel = "Yesterday"
+                                    } else {
+                                        dateLabel = new Date(date).toLocaleDateString("en-US", {
+                                            month: "long",
+                                            day: "numeric",
+                                            year: "numeric"
+                                        });
+                                    }
+
+                                    liDay.innerHTML = 
+                                    `<div class="transac_date">
+                                        <!-- DAY -->
+                                        <p class="list_date">${dateLabel}</p>
                                     </div>
-                                </li>
+                                    
+                                    <ul class="day_transac_list" id="timePayed"></ul>
+                                    `;
 
-                                <li>
-                                    <div class="transac_item">
-                                        <p class="transac_time">1:00 PM</p>
+                                    const timePayedListId = liDay.querySelector(".day_transac_list");
 
-                                        <div class="transac_amount_decr">
-                                            <p>Tuition Fee</p>
-                                            <p>-1,000.00</p>
-                                        </div>
-                                    </div>
-                                </li>
+                                    transactions.forEach(transaction => {
+                                        const list = document.createElement("li");
+                                        list.innerHTML = `
+                                            <div class="transac_item">
+                                                <!-- TIME -->
+                                                <p class="transac_time">${transaction.timeOnly}</p>
 
-                                <li>
-                                    <div class="transac_item">
-                                        <p class="transac_time">1:00 PM</p>
+                                                <div class="transac_amount_decr">
+                                                    <p>Tuition Fee</p>
 
-                                        <div class="transac_amount_decr">
-                                            <p>Tuition Fee</p>
-                                            <p>-1,000.00</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                        <li class="day_transac">
-                            <div class="transac_date">
-                                <p>Today</p>
-                            </div>
+                                                    <!-- AMOUNT PAID -->
+                                                    <p>-${Number(transaction.amount).toLocaleString("en-US")}.00</p>
+                                                </div>
+                                            </div>
+                                        `;
+                                        timePayedListId.appendChild(list);
+                                    });
 
-                            <ul class="day_transac_list">
-                                <li>
-                                    <div class="transac_item">
-                                        <p class="transac_time">1:00 PM</p>
-
-                                        <div class="transac_amount_decr">
-                                            <p>Tuition Fee</p>
-                                            <p>-1,000.00</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="transac_item">
-                                        <p class="transac_time">1:00 PM</p>
-
-                                        <div class="transac_amount_decr">
-                                            <p>Tuition Fee</p>
-                                            <p>-1,000.00</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="transac_item">
-                                        <p class="transac_time">1:00 PM</p>
-
-                                        <div class="transac_amount_decr">
-                                            <p>Tuition Fee</p>
-                                            <p>-1,000.00</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="day_transac">
-                            <div class="transac_date">
-                                <p>Today</p>
-                            </div>
-
-                            <ul class="day_transac_list">
-                                <li>
-                                    <div class="transac_item">
-                                        <p class="transac_time">1:00 PM</p>
-
-                                        <div class="transac_amount_decr">
-                                            <p>Tuition Fee</p>
-                                            <p>-1,000.00</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="transac_item">
-                                        <p class="transac_time">1:00 PM</p>
-
-                                        <div class="transac_amount_decr">
-                                            <p>Tuition Fee</p>
-                                            <p>-1,000.00</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="transac_item">
-                                        <p class="transac_time">1:00 PM</p>
-
-                                        <div class="transac_amount_decr">
-                                            <p>Tuition Fee</p>
-                                            <p>-1,000.00</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                    </ul>
+                                    transacList.appendChild(liDay);
+                                }
+                            } catch (error) {
+                                console.error("No data")
+                            }   
+                        }) ();
+                    </script>
                 </div>
             </div>
         </div>
@@ -172,8 +128,8 @@
                 </div>
 
                 <div class="main_pay_sched">
-                    <ul>
-                        <li class="pay_date_item">
+                    <ul class="pay_sched_list" id="paySchedList">
+                       <!-- <li class="pay_date_item">
                             <div class="pay_date_item_date">
                                 <p>15</p>
                                 <p>Oct</p>
@@ -185,225 +141,69 @@
                                 <p>PhP</p>
                                 <p>1,560.00</p>
                             </div>  
-                        </li>
+                        </li> -->   
 
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
-
-                        <li class="pay_date_item">
-                            <div class="pay_date_item_date">
-                                <p>15</p>
-                                <p>Oct</p>
-                                <p>,</p>
-                                <p>2025</p>
-                            </div>
-                            
-                            <div class="tabs_price">
-                                <p>PhP</p>
-                                <p>1,560.00</p>
-                            </div>  
-                        </li>
                     </ul>
+
+                    <script>
+                    (async function() {
+                    try {
+                        const response = await fetch("Home/getPaymentSched");
+                        const data = await response.json();
+
+                        const paySchedList = document.querySelector(".pay_sched_list");
+                        paySchedList.innerHTML = "";
+
+                        data.forEach(item => {
+                            const dateLabel = new Date(item.createdAt).toLocaleDateString("en-US", {
+                                month: "long",
+                                day: "numeric",
+                                year: "numeric"
+                            });
+
+                            const list = document.createElement("li");
+                            list.classList.add("pay_date_item");
+                            list.innerHTML = `
+                                <div class="pay_date_item_date">
+                                    <p>${dateLabel}</p>
+                                </div>
+
+                                <div class="tabs_price">
+                                    <p>PhP</p>
+                                    <p>${Number(item.amount).toLocaleString("en-US")}.00</p>
+                                </div>  
+                            `;
+
+                            paySchedList.appendChild(list);
+                        });
+
+                    } catch (error) {
+                        console.error("Error:", error);
+                    }
+                })();
+                    </script>
                 </div>
 
                 <div class="tabs_bot_bar">
                     <p>Total</p>
                     <div class="tabs_price">
                         <p>PhP</p>
-                        <p>18,500.00</p>
+                        <p><span id="paySchedTotal"></span>.00</p>
+
+                        <script>
+                            (async function() {
+                                const response = await fetch("Home/getPaymentSched");
+                                const data = await response.json();
+                                let paySchedTotal = 0;
+
+                                data.forEach(amount => {
+                                    paySchedTotal += amount.amount;
+                                });
+                                
+                                document.getElementById("paySchedTotal").textContent = paySchedTotal.toLocaleString("en-US");
+                            
+                            }) ();
+                        </script>
                     </div>
                 </div>
             </div>
@@ -435,7 +235,7 @@
 
                                 <div class="tabs_price">
                                     <p>PhP</p>
-                                    <p>1,000.00</p>
+                                    <p >1,000.00</p>
                                 </div>
                             </div>
                         </li>
@@ -449,7 +249,7 @@
 
                                 <div class="tabs_price">
                                     <p>PhP</p>
-                                    <p>1,000.00</p>
+                                    <p id="chargesFee">17,500.00</p>
                                 </div>
                             </div>
                         </li>
@@ -464,7 +264,7 @@
                                 
                                 <div class="tabs_price">
                                     <p>PhP</p>
-                                    <p>1,000.00</p>
+                                    <p id="otherSchoolFees">0.00</p>
                                 </div>
                             </div>
                         </li>
@@ -491,234 +291,109 @@
                 </div>
 
                 <div class="pay_ad_main">
-                    <ul class="pay_ad_list_parent">
-                        <li>
-                            <div>
-                                <div class="pay_ad_top_tab">
-                                    <div class="pay_ad_top_tab_date">
-                                        <p>11</p>
+
+                    <!-- PAYMENT AND ADJUSTMENT LIST -->
+                    <ul class="pay_ad_list_parent" id="payAdListParent"> </ul>
+                    
+                    <script>
+                        (async function() {
+                            try {
+                                const response = await fetch("Home/getTransaction");
+                                const data = await response.json();
+
+                                const payAdListParent = document.getElementById("payAdListParent");
+                                payAdListParent.innerHTML = "";
+
+                                // GROUP EACH LIST
+                                const grouped = {};
+                                data.forEach(d => {
+                                    if (!grouped[d.dateOnly]) grouped[d.dateOnly] = [];
+                                    grouped[d.dateOnly].push(d);
+                                });
+
+                                // TODAYS DATE
+                                const today = new Date().toLocaleDateString("en-CA");
+
+                                for (const [date, transactions] of Object.entries(grouped)) {
+                                    const listGroup = document.createElement("li");
+                                    
+                                    const dateLabel = new Date(date).toLocaleDateString("en-US", {
+                                        month: "long",
+                                        day: "numeric",
+                                        year: "numeric"
+                                    });
+
+                                    listGroup.innerHTML = `
                                         <div>
-                                            <p>Jun</p>
-                                            <p>,</p>
-                                        </div>
-                                        <p>2025</p>
-                                    </div>
+                                            <div class="pay_ad_top_tab">
+                                                <div class="pay_ad_top_tab_date">
+                                                    <p>${dateLabel}</p>
+                                                    <!-- <div>
+                                                        <p>Jun</p>
+                                                        <p>,</p>
+                                                    </div>
+                                                    <p>2025</p> -->
+                                                </div>
 
-                                    <p> | </p>
+                                                <p> | </p>
 
-                                    <div class="pay_ad_top_tab_or">
-                                        <p>OR #</p>
-                                        <p>Restructed Fees Deduction OF</p>
-                                    </div>
-                                </div>
+                                                <div class="pay_ad_top_tab_or">
+                                                    <p>OR #</p>
+                                                    <p>Restructed Fees Deduction OF</p>
+                                                </div>
+                                            </div>
 
-                                <ul class="pay_ad_list_child">
-                                    <li class="pay_date_item">
-                                        <div class="pay_date_item_date">
-                                            <p>15</p>
-                                            <p>Oct</p>
-                                            <p>,</p>
-                                            <p>2025</p>
-                                        </div>
-
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div>  
-                                    </li>
-
-                                    <li class="pay_date_item">
-                                        <div class="pay_date_item_date">
-                                            <p>15</p>
-                                            <p>Oct</p>
-                                            <p>,</p>
-                                            <p>2025</p>
-                                        </div>
-                                            
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div>  
-                                    </li>
-
-                                    <li class="pay_date_item">
-                                        <div class="pay_date_item_date">
-                                            <p>15</p>
-                                            <p>Oct</p>
-                                            <p>,</p>
-                                            <p>2025</p>
-                                        </div>
-                                            
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div>  
-                                    </li>
-
-                                    <li class="pay_date_item_total_fixed">
-                                        <p>Total</p>
-
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div> 
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div>
-                                <div class="pay_ad_top_tab">
-                                    <div class="pay_ad_top_tab_date">
-                                        <p>11</p>
-                                        <div>
-                                            <p>Jun</p>
-                                            <p>,</p>
-                                        </div>
-                                        <p>2025</p>
-                                    </div>
-
-                                    <p> | </p>
-
-                                    <div class="pay_ad_top_tab_or">
-                                        <p>OR #</p>
-                                        <p>Restructed Fees Deduction OF</p>
-                                    </div>
-                                </div>
-
-                                <ul class="pay_ad_list_child">
-                                    <li class="pay_date_item">
-                                        <div class="pay_date_item_date">
-                                            <p>15</p>
-                                            <p>Oct</p>
-                                            <p>,</p>
-                                            <p>2025</p>
-                                        </div>
-
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div>  
-                                    </li>
-
-                                    <li class="pay_date_item">
-                                        <div class="pay_date_item_date">
-                                            <p>15</p>
-                                            <p>Oct</p>
-                                            <p>,</p>
-                                            <p>2025</p>
-                                        </div>
-                                            
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div>  
-                                    </li>
-
-                                    <li class="pay_date_item">
-                                        <div class="pay_date_item_date">
-                                            <p>15</p>
-                                            <p>Oct</p>
-                                            <p>,</p>
-                                            <p>2025</p>
-                                        </div>
-                                            
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div>  
-                                    </li>
-
-                                    <li class="pay_date_item_total_fixed">
-                                        <p>Total</p>
+                                            <ul class="pay_ad_list_child">
                                         
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div> 
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div>
-                                <div class="pay_ad_top_tab">
-                                    <div class="pay_ad_top_tab_date">
-                                        <p>11</p>
-                                        <div>
-                                            <p>Jun</p>
-                                            <p>,</p>
+                                            </ul>
                                         </div>
-                                        <p>2025</p>
-                                    </div>
+                                    `;
 
-                                    <p> | </p>
+                                    const payAdListChild = listGroup.querySelector(".pay_ad_list_child");
 
-                                    <div class="pay_ad_top_tab_or">
-                                        <p>OR #</p>
-                                        <p>Restructed Fees Deduction OF</p>
-                                    </div>
-                                </div>
+                                    let totalAmountPerList = 0;
 
-                                <ul class="pay_ad_list_child">
-                                    <li class="pay_date_item">
-                                        <div class="pay_date_item_date">
-                                            <p>15</p>
-                                            <p>Oct</p>
-                                            <p>,</p>
-                                            <p>2025</p>
-                                        </div>
+                                    transactions.forEach(transaction => {
+                                        // TOTAL AMOUNT 
+                                        totalAmountPerList += Number(transaction.amount);
 
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div>  
-                                    </li>
+                                        const list = document.createElement("li");
+                                        list.classList.add("pay_date_item");
+                                        list.innerHTML = `
+                                            <div class="pay_date_item_date">
+                                                <p>Tuition fee</p>
+                                            </div>
 
-                                    <li class="pay_date_item">
-                                        <div class="pay_date_item_date">
-                                            <p>15</p>
-                                            <p>Oct</p>
-                                            <p>,</p>
-                                            <p>2025</p>
-                                        </div>
-                                            
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div>  
-                                    </li>
+                                            <div class="tabs_price">
+                                                <p>PhP</p>
+                                                <p>${Number(transaction.amount).toLocaleString("en-US")}.00</p>
+                                            </div>  
+                                        `;
 
-                                    <li class="pay_date_item">
-                                        <div class="pay_date_item_date">
-                                            <p>15</p>
-                                            <p>Oct</p>
-                                            <p>,</p>
-                                            <p>2025</p>
-                                        </div>
-                                            
-                                        <div class="tabs_price">
-                                            <p>PhP</p>
-                                            <p>1,560.00</p>
-                                        </div>  
-                                    </li>
+                                        payAdListChild.appendChild(list);
+                                    });
 
-                                    <li class="pay_date_item_total_fixed">
+                                    // TOTAL <li>
+                                    const totalLi = document.createElement("li");
+                                    totalLi.classList.add("pay_date_item_total_fixed");
+                                    totalLi.innerHTML = `
                                         <p>Total</p>
-                                        
+
                                         <div class="tabs_price">
                                             <p>PhP</p>
-                                            <p>1,560.00</p>
+                                            <p>${totalAmountPerList.toLocaleString("en-US")}.00</p>
                                         </div> 
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                                    `;
+                                    payAdListChild.appendChild(totalLi);
+                                    payAdListParent.appendChild(listGroup);
 
+                                }
 
-                    </ul>
+                            } catch (error) {
+                                console.error("No data");
+                            }
+                        }) ();
+                    </script>
                 </div>
 
                 <div class="tabs_bot_bar">
@@ -726,13 +401,24 @@
 
                     <div class="tabs_price">
                         <p>PhP</p>
-                        <p>18,500.00</p>
+                        <p><span id="totalAssessmentBalance"></span>.00</p>
+
+                        <script>
+                            (async function() {
+                                const response = await fetch("Home/getTransaction");
+                                const data = await response.json();
+                                let totalAssessmentBalance = 0;
+
+                                data.forEach(transaction => {
+                                    totalAssessmentBalance += transaction.amount;
+                                });
+
+                                document.getElementById("totalAssessmentBalance").textContent = totalAssessmentBalance.toLocaleString("en-US");
+                            }) ();
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-

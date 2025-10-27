@@ -1,11 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using oneSTIOnlineTuitionPayment.Data
+@model oneSTIOnlineTuitionPayment.Models.ViewModels
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>One STI Student Portal</title>
-
-    <link rel="icon" href="/favicon.svg">
+    <title>Document</title>
 
     <!-- STYLES -->
     <link rel="stylesheet" href="~/css/main.css">
@@ -120,30 +122,35 @@
                             <p>Remaining balance:</p>
                             <div class="tabs_price pop_up">
                                 <p>PhP</p>
-                                <p>6,900.00</p>
+                                <p>@Model.RemBalance?.Balance.00</p>
                             </div>
                         </div>
 
                         <div class="pay_meth_con">
                             <p>Payment method:</p>
-                            <p id="paymentMethod">GCash</p>
+                            <p id="paymentMethodPTag">GCash</p>
                         </div>
                     </div>
 
-                    <form action="" class="pay_meth_form">
+                    <form asp-controller="Home" asp-action="SubmitPayment" method="post" id="payAmountForm" class="pay_meth_form">
                         <div class="amount_con">
+                            <!-- PAYMENT METHOD -->
+                            <input type="hidden" name="PaymentMethod" id="paymentMethod">
+
                             <label for="amount">Amount:</label>
 
                             <div class="amount_input">
-                                <input type="number" name="amount" id="amount" class="no_spinner" step="1" min="0" required>
+                                <input type="number" name="Amount" id="amount" class="no_spinner" step="1" min="0" required>
                                 <div class="placeholder">    
                                     <img src="/img/pesosSign.jpg" alt="pesoSign">
                                     <p>0.00</p>
                                 </div>
                             </div>
+
+                            <p class="amount_error" id="amountError"></p>
                         </div>
 
-                        <button class="pop_up_btn_proceed" id="proceedBtn" asp-controller="GCash" asp-action="OtpPage">Proceed</button>
+                        <button class="pop_up_btn_proceed" type="submit" id="proceedBtn">Proceed</button>
                     </form>
                 </div>
 
@@ -205,5 +212,9 @@
 
     <!-- SCRIPT -->
     <script src="~/js/main.js" asp-append-version="true"></script>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
 </body>
 </html>
