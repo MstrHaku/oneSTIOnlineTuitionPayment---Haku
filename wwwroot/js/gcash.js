@@ -122,11 +122,29 @@ mpinForm.addEventListener("submit", (e) => {
 // VARIABLES
 const otp = document.querySelectorAll(".otp_con input");
 const firstOtp = document.getElementById("otpPin1");
+const otpInputs = document.querySelectorAll(".no_spinner");
 
 const mpin = document.querySelectorAll(".mpin_con input");
 
 // MAKE USER ALWAYS START AT THE FIRST INPUT
 document.addEventListener("DOMContentLoaded", () => {
+
+    // ONLY ACCEPT NUMBER
+    otpInputs.forEach((input) => {
+        input.addEventListener("input", () => {
+            input.value = input.value.replace(/[^0-9]/g, "");
+        });
+
+        input.addEventListener("keydown", (e) => {
+            if (["e", "E", "+", "-", "."].includes(e.key)) {
+                e.preventDefault();
+            }
+        });
+
+        input.addEventListener("paste", (e) => {
+            e.preventDefault();
+        });
+    });
 
     // ALWAYS START AT FIRST INPUT OTP
     otp.forEach((input, index) => {
