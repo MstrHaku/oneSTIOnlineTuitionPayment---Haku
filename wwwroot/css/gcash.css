@@ -684,3 +684,8 @@ main {
 }
 
 
+@media (max-width: 1120px) {
+    .button_opacity {
+        visibility: hidden;
+    }
+}

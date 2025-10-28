@@ -75,6 +75,10 @@ input {
     border-radius: var(--border-radius);
 }
 
+input:focus {
+    border: 1px solid var(--green-main);
+}
+
 button {
     display: flex;
     justify-content: center;
@@ -167,7 +171,8 @@ button:hover {
 }
 
 /* INPUT LABEL DISAPPEAR */
-.input input:focus + label {
+.input input:focus + label,
+.input input:not(:placeholder-shown) + label {
     opacity: 0;
     visibility: hidden;
 }
