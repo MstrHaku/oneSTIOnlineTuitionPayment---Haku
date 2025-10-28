@@ -189,6 +189,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // ONLY ACCEPT NUMBER
+    mpin.forEach((input) => {
+        input.addEventListener("input", () => {
+            input.value = input.value.replace(/[^0-9]/g, "");
+        });
+
+        input.addEventListener("keydown", (e) => {
+            if (["e", "E", "+", "-", "."].includes(e.key)) {
+                e.preventDefault();
+            }
+        });
+
+        input.addEventListener("paste", (e) => {
+            e.preventDefault();
+        });
+    });
+
     // ALWAYS START AT FIRST INPUT
     mpin.forEach((input, index) => {
         if (index !== 0) input.disabled = true;
@@ -204,26 +221,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mpin.forEach((input, index) => {
         input.addEventListener("input", () => {
-            const value = input.value;
+            const value = input.value.trim();
 
             if (value) {
                 input.classList.add("active");
-            }
+                input.readOnly = true;
 
-            if (value && index < mpin.length - 1) {
-
-                mpin[index + 1].disabled = false;
-                mpin[index + 1].focus();
+                if (index < mpin.length - 1) {
+                    mpin[index + 1].disabled = false;
+                    mpin[index + 1].focus();
+                }
             }
         });
 
         input.addEventListener("keydown", (e) => {
-            if (e.key === "Backspace" && index > 0 && !input.value) {
-                mpin[index - 1].classList.remove("active");
-                mpin[index].disabled = true;
-                mpin[index - 1].focus();
-                mpin[index - 1].value = "";
+            if (e.key === "Backspace") {
+                if (input.value !== "") {
+                    input.value = "";
+                    input.classList.remove("active");
+                    input.readOnly = false;
+                    input.disabled = false;
+                } else if (index > 0) {
+                    input.disabled = true;
+                    input.classList.remove("active");
+                    mpin[index - 1].classList.remove("active");
+                    mpin[index].disabled = true;
+                    mpin[index - 1].focus();
+                    mpin[index - 1].value = "";
+                    mpin[index - 1].readOnly = false;
+                }
+
             }
+
 
             if (index > 0 && mpin[index - 1].disabled) {
                 e.preventDefault();
